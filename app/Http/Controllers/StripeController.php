@@ -12,20 +12,24 @@ use Laravel\Cashier\Billable;
 class StripeController extends Controller
 {
 
-    private $user =null;
     public function __construct()
     {
-        $this->user = Auth::user();
         Stripe::setApiKey(env('STRIPE_SECRET'));
     }
 
-    public function createPaymentIntent()
+    public function createPaymentIntent(Request $request)
     {
         $user = Auth::user();
-        $intent=Cashier::findBillable($user->stripe_id);
-      //  $intent=Cashier::findBillable('cus_J4SRKA3pae7MKf');
+        $paymentMethod = $request->payment_method_id;
+        Cashier::findBillable($user->stripe_id)->charge(50000,$paymentMethod,[
+            'currency'  => 'usd',
+            'setup_future_usage' => "off_session",
+            'description'   =>"testing descriptions"
+        ]);
+        echo 'Done';
+        //  $intent=Cashier::findBillable('cus_J4SRKA3pae7MKf');
        // dd($intent->paymentMethods());
-        echo json_encode(array('client_secret' => $intent->client_secret));
+//        echo json_encode(array('client_secret' => $intent->client_secret));
     }
 
     public function setPaymentMethod(Request $request)

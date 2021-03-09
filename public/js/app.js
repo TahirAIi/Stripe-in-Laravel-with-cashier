@@ -1296,7 +1296,7 @@ module.exports = (
       };
     })() :
 
-  // Non standard browser env (web workers, react-native) lack needed support.
+  // Non standard browser .env (web workers, react-native) lack needed support.
     (function nonStandardBrowserEnv() {
       return {
         write: function write() {},
@@ -37385,8 +37385,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // window.Pusher = require('pusher-js');
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     key: process..env.MIX_PUSHER_APP_KEY,
+//     cluster: process..env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
 
@@ -37410,8 +37410,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\stripe\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\stripe\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Stripe\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Stripe\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

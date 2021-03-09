@@ -22,8 +22,20 @@ Route::get('/subscribe', function () {
     ]);
 });
 
+Route::get('/ltd', function () {
+    return view('ltd-payment',[
+        'intent' => \Illuminate\Support\Facades\Auth::user()->createSetupIntent()
+    ]);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/create-payment-intent','StripeController@createPaymentIntent');
+//Route::get('/create-payment-intent','StripeController@createPaymentIntent');
 Route::post('/create-subscription','StripeController@setPaymentMethod');
+Route::post('/create-ltd','StripeController@createPaymentIntent');
+
+Route::post(
+    'stripe/webhook',
+    '\App\Http\Controllers\StripeWebhook@@handleInvoicePaymentSucceeded'
+);

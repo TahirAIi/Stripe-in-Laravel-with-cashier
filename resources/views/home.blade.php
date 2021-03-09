@@ -50,7 +50,7 @@
 <script>
     function oneTimePayment()
     {
-
+        window.location.href = '/ltd';
     }
     function createSubscription()
     {
@@ -75,7 +75,7 @@
         }
     };
 
-    var stripe = Stripe('{{ env("STRIPE_KEY") }}', { locale: 'en' }); // Create a Stripe client.
+    var stripe = Stripe('{{ .env("STRIPE_KEY") }}', { locale: 'en' }); // Create a Stripe client.
     const elements = stripe.elements(); // Create an instance of Elements.
     const card = elements.create('card', { style: style }); // Create an instance of the card Element.
     card.mount('#card-element');
